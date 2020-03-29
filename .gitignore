@@ -1,0 +1,21 @@
+# My configurations
+db.sqlite3
+
+
+
+
+
+
+# Windows:
+Thumbs.db
+Desktop.ini
+
+
+
+#Python
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build

@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-# __name__ == "__main__"
+# import django haystack
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -33,9 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    'comments.apps.CommentsConfig'
-    #'blog',
+    'pure_pagination',  # 分页
+    'blog.apps.BlogConfig',  # 注册blog
+    'comments.apps.CommentsConfig',  # 注册comments
+    'haystack',  # 搜索
 ]
 
 MIDDLEWARE = [
@@ -66,6 +68,13 @@ TEMPLATES = [
     },
 ]
 
+# django-pure-pagination
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 4,  # 分页条当前页前后应该现实的总页数（两边分布均匀）
+    'MARGIN_PAGES_DISPLAYED': 2,  # 分页条开头和结尾显示的页数
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,  # 当请求不存在页，显示第一页
+}
+
 WSGI_APPLICATION = 'PersonalBlog.wsgi.application'
 
 
@@ -79,7 +88,16 @@ DATABASES = {
     }
 }
 
-
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch2_backend.Elasticsearch2SearchEngine',
+        # 'ENGINE': 'blog.elasticsearch2_ik_backend.Elasticsearch2SearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'Personal_blog_pipenv',
+    },
+}
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

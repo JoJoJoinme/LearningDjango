@@ -14,11 +14,11 @@ def comment(request, post_pk):
         comment = form.save(commit=False)
         comment.post = post
         comment.save()
-        # messages.add_message(request, messages.SUCCESS, '评论发表成功', extra_tags='success')
+        messages.add_message(request, messages.SUCCESS, '评论发表成功', extra_tags='success')
         return redirect(post)
     context = {
         'post': post,
         'form': form,
     }
-    # messages.add_message(request, messages.ERROR, '评论发表失败', extra_tags='danger')
+    messages.add_message(request, messages.ERROR, '评论发表失败', extra_tags='danger')
     return render(request, 'comments/preview.html', context=context)

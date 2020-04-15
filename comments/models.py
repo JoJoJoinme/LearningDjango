@@ -17,3 +17,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{}:{}'.format(self.name, self.text[:20])
+

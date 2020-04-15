@@ -3,9 +3,9 @@
 import os
 import sys
 
-
+# print(sys.argv)
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PerosnalBlog.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PersonalBlog.settings.local')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -15,7 +15,6 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-
 
 if __name__ == '__main__':
     main()

@@ -13,8 +13,8 @@
     <!-- css -->
     <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
      <style>
-    .codehilite {
-      padding: 0;
+         span.highlighted{
+            color: red;
     }
 
     /* for block of numbers */
@@ -76,17 +76,17 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="首页">首页</a></li>
-                            <li class="cl-effect-11"><a href="../../../网站模板/django-blog-tutorial-templates-master/full-width.html" data-hover="博客">博客</a></li>
-                            <li class="cl-effect-11"><a href="../../../网站模板/django-blog-tutorial-templates-master/about.html" data-hover="关于">关于</a></li>
-                            <li class="cl-effect-11"><a href="../../../网站模板/django-blog-tutorial-templates-master/contact.html" data-hover="联系">联系</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="博客">博客</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="关于">关于</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'blog:index' %}" data-hover="联系">联系</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
                     <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="搜索" required>
+                        <form role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
+                            <input type="search" name="q", placeholder="搜索" required>
                             <button type="submit"><span class="ion-ios-search-strong"></span></button>
                         </form>
                     </div>
@@ -94,12 +94,12 @@
             </div><!-- col-md-8 -->
         </div>
     </header>
-    {% if message %}
+    {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissable" role="alert">
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                {{ message}}
+                {{ message }}
             </div>
         {% endfor %}
     {% endif %}
@@ -121,7 +121,7 @@
                 {% show_categories %}
                 {% show_tags %}
                 <div class="rss">
-                    <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
+                    <a href="{% url 'rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
                 </div>
             </aside>
         </div>
@@ -144,9 +144,9 @@
     <nav>
         <ul>
             <li><a href="{% url 'blog:index' %}">首页</a></li>
-            <li><a href="../../../网站模板/django-blog-tutorial-templates-master/full-width.html">博客</a></li>
-            <li><a href="../../../网站模板/django-blog-tutorial-templates-master/about.html">关于</a></li>
-            <li><a href="../../../网站模板/django-blog-tutorial-templates-master/contact.html">联系</a></li>
+            <li><a href="{% url 'blog:index' %}">博客</a></li>
+            <li><a href="{% url 'blog:index' %}">关于</a></li>
+            <li><a href="{% url 'blog:index' %}">联系</a></li>
         </ul>
     </nav>
 </div>

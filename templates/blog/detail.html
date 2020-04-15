@@ -75,12 +75,12 @@
                             <span class="post-date"><a href="#"><time class="entry-date"
                                                                       datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
                             <span class="post-author"><a href="#">{{ post.author }}</a></span>
-                            <span class="comments-link"><a href="{{ post.get_absolute_url}}">{{ post.comment_set.count }}}</a></span>
-                            <span class="views-count"><a href="#">588 阅读</a></span>
+                            <span class="comments-link"><a href="#comment-area">{{ post.comment_set.count }} 评论</a></span>
+                            <span class="views-count"><a href="#">{{ post.views}} 阅读</a></span>
                         </div>
                     </header>
                     <div class="entry-content clearfix">
-                        {{ post.body|safe }}
+                        {{ post.body_html|safe }}
                     </div>
                 </article>
                 <section class="comment-area" id="comment-area">
@@ -115,7 +115,7 @@
                     <h3 class="widget-title">标签云</h3>
                 </div>
                 <div class="rss">
-                    <a href=""><span class="ion-social-rss-outline"></span> RSS 订阅</a>
+                    <a href="{% url 'rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
                 </div>
             </aside>
         </div>
@@ -138,9 +138,9 @@
     <nav>
         <ul>
             <li><a href="index.html">首页</a></li>
-            <li><a href="../../../网站模板/django-blog-tutorial-templates-master/full-width.html">博客</a></li>
-            <li><a href="../../../网站模板/django-blog-tutorial-templates-master/about.html">关于</a></li>
-            <li><a href="../../../网站模板/django-blog-tutorial-templates-master/contact.html">联系</a></li>
+            <li><a href="index.html">博客</a></li>
+            <li><a href="index.html">关于</a></li>
+            <li><a href="index.html">联系</a></li>
         </ul>
     </nav>
 </div>

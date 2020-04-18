@@ -4,7 +4,7 @@ volumes:
   database_local:
   esdata_local:
 services:
-  DjangoBlog_lcoal:
+  djangoblog_lcoal:
     build:
       context: .
       dockerfile: ./compose/local/Dockerfile

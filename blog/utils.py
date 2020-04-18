@@ -1,10 +1,11 @@
 from django.utils.html import strip_tags
 from haystack.utils import Highlighter as HaystackHightlighter
 
+
 class Highlighter(HaystackHightlighter):
-    '''
+    """
     自定义关键词高亮器，不截断果断的文本
-    '''
+    """
 
     def highlight(self, text_block):
         self.text_block = strip_tags(text_block)

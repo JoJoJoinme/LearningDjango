@@ -4,18 +4,20 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-elasticsearch = "==2"
+bcrypt = "*"
+fabric = "*"
+invoke = "*"
+requests = "*"
+coverage = "*"
 
 [packages]
 django = "==2.2.10"
-elasticsearch = ">=2,<3"
 markdown = "*"
-fabric = "*"
-invoke = "*"
 common = "*"
 faker = "==4.0.2"
 django-pure-pagination = "*"
 django-haystack = "*"
+elasticsearch = "==2.4"
 
 [requires]
 python_version = "3.7"

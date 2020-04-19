@@ -3,16 +3,18 @@ from django.utils import timezone
 from .models import Post, Category, Tag
 
 # Register your models here.
+
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'created_time', 'modified_time', 'category', 'author']
-    fields = ['title', 'body', 'excert', 'category', 'tags']
+    fields = ['title', 'body', 'excerpt', 'category', 'tags']
+
+    def save_model(self, request, obj, form, change):
+        obj.author = request.user
+        # super.save_model()
+        super().save_model(request, obj, form, change)
 
 
-def save_model(self, request, obj, form, change):
-    obj.author = request.user
-    super().save_model(request, obj, form, change)
-
-
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Category)
 admin.site.register(Tag)

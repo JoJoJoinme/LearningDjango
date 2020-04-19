@@ -1,6 +1,7 @@
 from django.contrib.syndication.views import Feed
 from .models import Post
 
+
 class AllPostsRssFeed(Feed):
     # 显示在聚合阅读上的标题
     title = "Helious.wu's Blog"

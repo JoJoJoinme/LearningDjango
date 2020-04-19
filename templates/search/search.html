@@ -38,11 +38,11 @@
 
         {% if page.has_previous or page.has_next %}
             <div class="text-center" style="margin-top: 30px">
-                {% if page.has_previous %>
-                    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo;Previousa>
-                {% if page.has_previous %}</a>{% end if %}
+                {% if page.has_previous %}
+                    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo;Previous>
+                {% if page.has_previous %}</a>{% endif %}
                 <span style="margin: 0 10px">|</span>
-                {% if page.has_next %}<a href="?q={{ query }}%amp;page={{ page.next_page_number }}">{% endif }Next
+                {% if page.has_next %}<a href="?q={{ query }}%amp;page={{ page.next_page_number }}">{% endif %}Next
                 &raquo;{% if page.has_next %}</a>{% endif %}
             </div>
         {% endif %}
